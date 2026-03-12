@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Backyard 9 – Official Course</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --green-deep: #0d2b1a;
+      --green-mid: #1a4a2e;
+      --green-light: #2d6e47;
+      --gold: #c9a84c;
+      --gold-light: #e2c97e;
+      --cream: #f5f0e8;
+      --cream-dark: #ede6d6;
+      --white: #ffffff;
+      --text-dark: #1a1a1a;
+      --text-mid: #3a3a3a;
+      --text-light: #6a6a6a;
+      --border: rgba(201,168,76,0.3);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--green-deep);
+      color: var(--cream);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(180deg, #0a1f12 0%, var(--green-deep) 100%);
+      border-bottom: 2px solid var(--gold);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(201,168,76,0.02) 40px,
+        rgba(201,168,76,0.02) 41px
+      );
+      pointer-events: none;
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 52px 24px 44px;
+      text-align: center;
+      position: relative;
+    }
+
+    .header-badge {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 5px 18px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.4rem, 7vw, 4rem);
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .header-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: rgba(245,240,232,0.65);
+      letter-spacing: 0.04em;
+      margin-bottom: 28px;
+    }
+
+    .header-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .header-divider span {
+      height: 1px;
+      width: 80px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+    .header-divider span:last-child {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .header-divider em {
+      color: var(--gold);
+      font-size: 1.1rem;
+      font-style: normal;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--green-mid);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 14px 20px;
+      color: rgba(245,240,232,0.75);
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav ul li a:hover {
+      color: var(--gold-light);
+      border-bottom-color: var(--gold);
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-header {
+      text-align: center;
+      padding: 60px 0 36px;
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+
+    .section-rule {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto;
+    }
+
+    /* ── GENERAL RULES ── */
+    .general-rules-grid {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .rule-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 16px 20px;
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      color: var(--cream-dark);
+      line-height: 1.6;
+    }
+
+    /* ── EQUIPMENT RULE HIGHLIGHT ── */
+    .equipment-rule {
+      background: rgba(201,168,76,0.06);
+      border: 1px solid var(--gold);
+      padding: 22px 26px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .equipment-rule .eq-label {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .equipment-rule p {
+      color: var(--cream);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    /* ── SCORECARD ── */
+    .scorecard-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--border);
+      margin-top: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 520px;
+    }
+
+    table thead tr {
+      background: var(--green-mid);
+    }
+
+    table thead th {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      padding: 14px 12px;
+      text-align: center;
+      border-bottom: 2px solid var(--gold);
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    table thead th:last-child { border-right: none; }
+
+    table tbody tr {
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      transition: background 0.15s;
+    }
+
+    table tbody tr:hover {
+      background: rgba(201,168,76,0.05);
+    }
+
+    table tbody tr.total-row {
+      background: var(--green-mid);
+      border-top: 2px solid var(--gold);
+    }
+
+    table tbody td {
+      padding: 13px 12px;
+      text-align: center;
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      color: var(--cream-dark);
+      border-right: 1px solid var(--border);
+    }
+
+    table tbody td:last-child { border-right: none; }
+
+    td.hole-num {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      width: 52px;
+    }
+
+    td.par-num {
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    td.max-num {
+      color: rgba(245,240,232,0.55);
+      font-size: 0.9rem;
+    }
+
+    td.total-label {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--gold-light);
+    }
+
+    .player-col {
+      min-width: 90px;
+    }
+
+    /* ── HOLE CARDS ── */
+    #holes { padding-bottom: 20px; }
+
+    .holes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .hole-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .hole-card:hover {
+      border-color: rgba(201,168,76,0.6);
+      transform: translateY(-2px);
+    }
+
+    .hole-card-header {
+      background: var(--green-mid);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hole-card-header .hole-title {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+    }
+
+    .hole-card-header .hole-stats {
+      display: flex;
+      gap: 12px;
+    }
+
+    .stat-badge {
+      text-align: center;
+    }
+
+    .stat-badge .stat-val {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1;
+    }
+
+    .stat-badge .stat-lbl {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.45);
+      margin-top: 2px;
+    }
+
+    .stat-divider {
+      width: 1px;
+      background: var(--border);
+      align-self: stretch;
+    }
+
+    .hole-card-body {
+      padding: 16px 18px;
+    }
+
+    .hole-card-body p {
+      font-size: 0.95rem;
+      color: rgba(245,240,232,0.8);
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    .hole-card-body p:last-child { margin-bottom: 0; }
+
+    .hole-tag {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      margin-bottom: 10px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      background: #09190f;
+      padding: 36px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: rgba(245,240,232,0.3);
+      text-transform: uppercase;
+    }
+
+    footer .gold-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 14px auto;
+      opacity: 0.5;
+    }
+
+    /* ── LEADERBOARD ── */
+    .leaderboard-wrap {
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .leaderboard-wrap table {
+      min-width: 340px;
+    }
+
+    .leaderboard-wrap thead th {
+      font-size: 9px;
+      padding: 12px 16px;
+    }
+
+    .leaderboard-wrap tbody td {
+      padding: 13px 16px;
+      font-size: 1rem;
+    }
+
+    td.rank-col {
+      width: 48px;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      color: rgba(245,240,232,0.45);
+      text-align: center;
+    }
+
+    td.rank-col.top { font-size: 18px; }
+
+    td.player-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--cream);
+      text-align: left;
+    }
+
+    td.player-name.leader {
+      color: var(--gold-light);
+    }
+
+    td.score-col {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--cream);
+    }
+
+    td.topar-col {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+    }
+
+    td.topar-col.under { color: #6fcf8a; }
+    td.topar-col.over  { color: #e07070; }
+    td.topar-col.even  { color: var(--cream-dark); }
+
+    .leaderboard-note {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.3);
+      text-align: center;
+      padding: 10px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── DIFFICULTY ── */
+    .difficulty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .diff-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .diff-card:hover { border-color: rgba(201,168,76,0.55); }
+
+    .diff-rank {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      color: rgba(245,240,232,0.35);
+      min-width: 18px;
+    }
+
+    .diff-hole {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--gold);
+      min-width: 52px;
+    }
+
+    .diff-score {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.95rem;
+      color: rgba(245,240,232,0.6);
+      margin-left: auto;
+    }
+
+    .diff-score.hard { color: #e07070; }
+    .diff-score.easy { color: #6fcf8a; }
+
+    /* ── SCROLL ANIMATION ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      nav ul li a { padding: 12px 12px; font-size: 9.5px; letter-spacing: 0.1em; }
+      .holes-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.1rem; }
+      .header-inner { padding: 38px 20px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-badge">Est. 2024 &nbsp;·&nbsp; Official Course</div>
+    <h1>The Backyard 9</h1>
+    <p class="header-sub">Official Rules & Scorecard</p>
+    <div class="header-divider">
+      <span></span>
+      <em>⛳</em>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#rules">General Rules</a></li>
+    <li><a href="#scorecard">Scorecard</a></li>
+    <li><a href="#holes">Hole Guide</a></li>
+    <li><a href="#leaderboard">Leaderboard</a></li>
+    <li><a href="#difficulty">Difficulty</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- GENERAL RULES -->
+  <section id="rules">
+    <div class="section-header fade-in">
+      <span class="section-label">Governance</span>
+      <h2>General Rules of Play</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="equipment-rule fade-in">
+      <span class="eq-label">Equipment Regulation</span>
+      <p>Each player is permitted to carry and use a single (1) club for the duration of the round. The selected club must fall within the range of a 6-iron through a 60-degree wedge, inclusive. Clubs outside this specification — including but not limited to long irons, hybrids, fairway woods, and putters — are not permitted. Players must declare their club selection prior to commencing play on Hole 1.</p>
+    </div>
+
+    <div class="general-rules-grid fade-in">
+      <div class="rule-card">Players must play the ball as it lies unless relief is explicitly permitted under the applicable hole regulation.</div>
+      <div class="rule-card">Maximum stroke limits apply on every hole. A player's score may not exceed the stated maximum regardless of strokes taken.</div>
+      <div class="rule-card">All penalty drops result in a one-stroke addition (+1) to the player's score unless otherwise specified in the hole regulation.</div>
+      <div class="rule-card">Each player is responsible for maintaining an accurate and honest stroke count throughout the round.</div>
+      <div class="rule-card">All disputes shall be settled by majority ruling among the players present at the time of the dispute.</div>
+    </div>
+  </section>
+
+  <!-- SCORECARD -->
+  <section id="scorecard">
+    <div class="section-header fade-in">
+      <span class="section-label">Official</span>
+      <h2>Course Scorecard</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="scorecard-wrap fade-in">
+      <table>
+        <thead>
+          <tr>
+            <th>Hole</th>
+            <th>Par</th>
+            <th>Max</th>
+            <th class="player-col">Player 1</th>
+            <th class="player-col">Player 2</th>
+            <th class="player-col">Player 3</th>
+            <th class="player-col">Player 4</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="hole-num">1</td><td class="par-num">3</td><td class="max-num">5</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="hole-num">2</td><td class="par-num">2</td><td class="max-num">4</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="hole-num">3</td><td class="par-num">4</td><td class="max-num">6</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="hole-num">4</td><td class="par-num">3</td><td class="max-num">5</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="hole-num">5</td><td class="par-num">3</td><td class="max-num">5</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="hole-num">6</td><td class="par-num">2</td><td class="max-num">4</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="hole-num">7</td><td class="par-num">3</td><td class="max-num">5</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="hole-num">8</td><td class="par-num">4</td><td class="max-num">6</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="hole-num">9</td><td class="par-num">3</td><td class="max-num">5</td><td></td><td></td><td></td><td></td></tr>
+          <tr class="total-row">
+            <td class="total-label" colspan="2">Total</td>
+            <td class="max-num">45</td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- HOLE GUIDE -->
+  <section id="holes">
+    <div class="section-header fade-in">
+      <span class="section-label">Hole-by-Hole</span>
+      <h2>Course Regulations</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="holes-grid">
+
+      <div class="hole-card fade-in">
+        <div class="hole-card-header">
+          <span class="hole-title">Hole 1</span>
+          <div class="hole-stats">
+            <div class="stat-badge"><span class="stat-val">3</span><span class="stat-lbl">Par</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-badge"><span class="stat-val">5</span><span class="stat-lbl">Max</span></div>
+          </div>
+        </div>
+        <div class="hole-card-body">
+          <span class="hole-tag">Tree Strike Required</span>
+          <p>The ball must strike the tree above the red line for the hole to count. If the ball travels over the road, the player must play the ball as it lies.</p>
+        </div>
+      </div>
+
+      <div class="hole-card fade-in">
+        <div class="hole-card-header">
+          <span class="hole-title">Hole 2</span>
+          <div class="hole-stats">
+            <div class="stat-badge"><span class="stat-val">2</span><span class="stat-lbl">Par</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-badge"><span class="stat-val">4</span><span class="stat-lbl">Max</span></div>
+          </div>
+        </div>
+        <div class="hole-card-body">
+          <span class="hole-tag">Stump or Circle</span>
+          <p>The ball must either strike the stump or come to rest inside the red circle. If the ball enters the woods, the player may play it as it lies or take a drop with a one-stroke penalty. All obstacles are immovable.</p>
+        </div>
+      </div>
+
+      <div class="hole-card fade-in">
+        <div class="hole-card-header">
+          <span class="hole-title">Hole 3</span>
+          <div class="hole-stats">
+            <div class="stat-badge"><span class="stat-val">4</span><span class="stat-lbl">Par</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-badge"><span class="stat-val">6</span><span class="stat-lbl">Max</span></div>
+          </div>
+        </div>
+        <div class="hole-card-body">
+          <span class="hole-tag">Door Strike Required</span>
+          <p>The ball must strike the door. Any white-colored portion of the door counts as a valid strike. The ball must be played as it lies throughout the entirety of this hole.</p>
+        </div>
+      </div>
+
+      <div class="hole-card fade-in">
+        <div class="hole-card-header">
+          <span class="hole-title">Hole 4</span>
+          <div class="hole-stats">
+            <div class="stat-badge"><span class="stat-val">3</span><span class="stat-lbl">Par</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-badge"><span class="stat-val">5</span><span class="stat-lbl">Max</span></div>
+          </div>
+        </div>
+        <div class="hole-card-body">
+          <span class="hole-tag">Circle Finish</span>
+          <p>The ball must come to rest inside the red circle. If the ball enters woods or water, the player may play it as it lies or take a one-stroke penalty drop.</p>
+        </div>
+      </div>
+
+      <div class="hole-card fade-in">
+        <div class="hole-card-header">
+          <span class="hole-title">Hole 5</span>
+          <div class="hole-stats">
+            <div class="stat-badge"><span class="stat-val">3</span><span class="stat-lbl">Par</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-badge"><span class="stat-val">5</span><span class="stat-lbl">Max</span></div>
+          </div>
+        </div>
+        <div class="hole-card-body">
+          <span class="hole-tag">Bucket Target · Bonus Hole</span>
+          <p>The ball must strike the bucket or come to rest within one grip length of the bucket using the player's club. If the ball lands inside the bucket, the player receives a one-stroke bonus (–1). The elevated surface may not be moved.</p>
+        </div>
+      </div>
+
+      <div class="hole-card fade-in">
+        <div class="hole-card-header">
+          <span class="hole-title">Hole 6</span>
+          <div class="hole-stats">
+            <div class="stat-badge"><span class="stat-val">2</span><span class="stat-lbl">Par</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-badge"><span class="stat-val">4</span><span class="stat-lbl">Max</span></div>
+          </div>
+        </div>
+        <div class="hole-card-body">
+          <span class="hole-tag">Circle or Sign</span>
+          <p>The ball must come to rest inside the red circle surrounding the sign. If the ball strikes any part of the sign, the circle requirement is satisfied. If the ball travels over the fence, the player may play it as it lies or take a drop on the other side no closer to the pin.</p>
+        </div>
+      </div>
+
+      <div class="hole-card fade-in">
+        <div class="hole-card-header">
+          <span class="hole-title">Hole 7</span>
+          <div class="hole-stats">
+            <div class="stat-badge"><span class="stat-val">3</span><span class="stat-lbl">Par</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-badge"><span class="stat-val">5</span><span class="stat-lbl">Max</span></div>
+          </div>
+        </div>
+        <div class="hole-card-body">
+          <span class="hole-tag">Circle or Pole</span>
+          <p>The ball must come to rest inside the red circle or strike the telephone pole at any height. If the ball travels over the fence, the player may play it as it lies or take a drop on the opposite side no closer to the pin.</p>
+        </div>
+      </div>
+
+      <div class="hole-card fade-in">
+        <div class="hole-card-header">
+          <span class="hole-title">Hole 8</span>
+          <div class="hole-stats">
+            <div class="stat-badge"><span class="stat-val">4</span><span class="stat-lbl">Par</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-badge"><span class="stat-val">6</span><span class="stat-lbl">Max</span></div>
+          </div>
+        </div>
+        <div class="hole-card-body">
+          <span class="hole-tag">Drainage Pipe</span>
+          <p>The ball must come to rest within one club length of or strike the front of the drainage pipe. If the ball travels over the fence, the player may play it as it lies or take a drop on the opposite side no closer to the pin.</p>
+        </div>
+      </div>
+
+      <div class="hole-card fade-in">
+        <div class="hole-card-header">
+          <span class="hole-title">Hole 9</span>
+          <div class="hole-stats">
+            <div class="stat-badge"><span class="stat-val">3</span><span class="stat-lbl">Par</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-badge"><span class="stat-val">5</span><span class="stat-lbl">Max</span></div>
+          </div>
+        </div>
+        <div class="hole-card-body">
+          <span class="hole-tag">Stump Strike Required</span>
+          <p>The ball must strike the left stump. If the ball enters the woods, the player may play it as it lies or take a drop on the grass no closer to the pin.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LEADERBOARD -->
+  <section id="leaderboard">
+    <div class="section-header fade-in">
+      <span class="section-label">All-Time</span>
+      <h2>Course Leaderboard</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="leaderboard-wrap fade-in">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th style="text-align:left;">Player</th>
+            <th>Score</th>
+            <th>To Par</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rank-col top">🥇</td>
+            <td class="player-name leader">Bruner</td>
+            <td class="score-col">20</td>
+            <td class="topar-col under">−7</td>
+          </tr>
+          <tr>
+            <td class="rank-col top">🥈</td>
+            <td class="player-name leader">Bunch</td>
+            <td class="score-col">24</td>
+            <td class="topar-col under">−3</td>
+          </tr>
+          <tr>
+            <td class="rank-col">3</td>
+            <td class="player-name">Sam M</td>
+            <td class="score-col">29</td>
+            <td class="topar-col over">+2</td>
+          </tr>
+          <tr>
+            <td class="rank-col">3</td>
+            <td class="player-name">Matty</td>
+            <td class="score-col">29</td>
+            <td class="topar-col over">+2</td>
+          </tr>
+          <tr>
+            <td class="rank-col">3</td>
+            <td class="player-name">Geno</td>
+            <td class="score-col">29</td>
+            <td class="topar-col over">+2</td>
+          </tr>
+          <tr>
+            <td class="rank-col">6</td>
+            <td class="player-name">Nate</td>
+            <td class="score-col">30</td>
+            <td class="topar-col over">+3</td>
+          </tr>
+          <tr>
+            <td class="rank-col">7</td>
+            <td class="player-name">Dex</td>
+            <td class="score-col">31</td>
+            <td class="topar-col over">+4</td>
+          </tr>
+          <tr>
+            <td class="rank-col">7</td>
+            <td class="player-name">Conor</td>
+            <td class="score-col">31</td>
+            <td class="topar-col over">+4</td>
+          </tr>
+          <tr>
+            <td class="rank-col">9</td>
+            <td class="player-name">Mike</td>
+            <td class="score-col">35</td>
+            <td class="topar-col over">+8</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="leaderboard-note">Best score only &nbsp;·&nbsp; Course Par: 27</div>
+    </div>
+  </section>
+
+  <!-- DIFFICULTY -->
+  <section id="difficulty">
+    <div class="section-header fade-in">
+      <span class="section-label">Statistics</span>
+      <h2>Hole Difficulty Rankings</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="difficulty-grid fade-in">
+      <div class="diff-card">
+        <span class="diff-rank">1</span>
+        <span class="diff-hole">Hole 9</span>
+        <span class="diff-score hard">+1.18</span>
+      </div>
+      <div class="diff-card">
+        <span class="diff-rank">2</span>
+        <span class="diff-hole">Hole 2</span>
+        <span class="diff-score hard">+1.09</span>
+      </div>
+      <div class="diff-card">
+        <span class="diff-rank">3</span>
+        <span class="diff-hole">Hole 4</span>
+        <span class="diff-score hard">+0.82</span>
+      </div>
+      <div class="diff-card">
+        <span class="diff-rank">4</span>
+        <span class="diff-hole">Hole 6</span>
+        <span class="diff-score hard">+0.45</span>
+      </div>
+      <div class="diff-card">
+        <span class="diff-rank">5</span>
+        <span class="diff-hole">Hole 3</span>
+        <span class="diff-score hard">+0.36</span>
+      </div>
+      <div class="diff-card">
+        <span class="diff-rank">6</span>
+        <span class="diff-hole">Hole 1</span>
+        <span class="diff-score">+0.18</span>
+      </div>
+      <div class="diff-card">
+        <span class="diff-rank">7</span>
+        <span class="diff-hole">Hole 5</span>
+        <span class="diff-score">+0.18</span>
+      </div>
+      <div class="diff-card">
+        <span class="diff-rank">8</span>
+        <span class="diff-hole">Hole 7</span>
+        <span class="diff-score easy">−0.09</span>
+      </div>
+      <div class="diff-card">
+        <span class="diff-rank">9</span>
+        <span class="diff-hole">Hole 8</span>
+        <span class="diff-score easy">−0.73</span>
+      </div>
+    </div>
+    <p style="font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,240,232,0.3); text-align:center; margin-top:14px;">Avg. strokes relative to par &nbsp;·&nbsp; Hardest → Easiest</p>
+  </section>
+
+</main>
+
+<footer>
+  <p>The Backyard 9</p>
+  <div class="gold-line"></div>
+  <p>Official Course Rules &nbsp;·&nbsp; All Rights Reserved</p>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth scroll for nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
