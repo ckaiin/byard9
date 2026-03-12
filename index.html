@@ -567,6 +567,468 @@
       transform: none;
     }
 
+    /* ── STAT BANNER ── */
+    .stat-banner {
+      background: linear-gradient(180deg, #0a1f12 0%, var(--green-deep) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+    }
+
+    .stat-banner-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stat-banner-card {
+      padding: 18px 16px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .stat-banner-card:last-child { border-right: none; }
+    .stat-banner-card.visible { opacity: 1; transform: none; }
+
+    .stat-banner-icon {
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .stat-banner-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.4);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .stat-banner-value {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold-light);
+      display: block;
+      line-height: 1.2;
+    }
+
+    .stat-banner-sub {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 0.82rem;
+      color: rgba(245,240,232,0.4);
+      display: block;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 600px) {
+      .stat-banner-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stat-banner-card:nth-child(2) { border-right: none; }
+      .stat-banner-card:nth-child(1),
+      .stat-banner-card:nth-child(2) {
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    /* ── SCOREKEEPER ── */
+    #scorekeeper { padding-bottom: 40px; }
+
+    .sk-setup, .sk-round, .sk-results { display: none; }
+    .sk-setup.active, .sk-round.active, .sk-results.active { display: block; }
+
+    /* Player setup */
+    .sk-player-inputs {
+      display: grid;
+      gap: 10px;
+      margin: 24px 0;
+    }
+
+    .sk-player-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sk-player-row label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      min-width: 60px;
+    }
+
+    .sk-input {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .sk-input:focus { border-color: var(--gold); }
+    .sk-input::placeholder { color: rgba(245,240,232,0.25); }
+
+    .sk-player-toggle {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .sk-count-btn {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: rgba(245,240,232,0.6);
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      padding: 8px 18px;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+
+    .sk-count-btn.active {
+      background: var(--green-mid);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .sk-btn {
+      display: inline-block;
+      background: var(--green-mid);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 13px 32px;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+      width: 100%;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .sk-btn:hover { background: var(--green-light); color: var(--white); }
+    .sk-btn.secondary {
+      background: transparent;
+      color: rgba(245,240,232,0.45);
+      border-color: rgba(201,168,76,0.2);
+      font-size: 10px;
+      padding: 10px 24px;
+    }
+
+    /* Round view */
+    .sk-hole-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0 14px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+
+    .sk-hole-info .sk-hole-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .sk-hole-info .sk-hole-meta {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: rgba(245,240,232,0.4);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .sk-hole-rule {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: rgba(245,240,232,0.45);
+      text-align: right;
+      max-width: 200px;
+      line-height: 1.4;
+    }
+
+    .sk-progress {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 22px;
+    }
+
+    .sk-prog-dot {
+      flex: 1;
+      height: 3px;
+      background: rgba(201,168,76,0.15);
+      transition: background 0.3s;
+    }
+
+    .sk-prog-dot.done { background: var(--gold); }
+    .sk-prog-dot.current { background: var(--gold-light); }
+
+    .sk-score-inputs {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .sk-score-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+    }
+
+    .sk-score-row .sk-pname {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--cream);
+      flex: 1;
+    }
+
+    .sk-score-row .sk-running {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      color: rgba(245,240,232,0.35);
+      letter-spacing: 0.1em;
+      min-width: 38px;
+      text-align: right;
+    }
+
+    .sk-stepper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+
+    .sk-step-btn {
+      background: var(--green-mid);
+      border: none;
+      color: var(--gold-light);
+      font-size: 1.2rem;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+
+    .sk-step-btn:hover { background: var(--green-light); }
+
+    .sk-step-val {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--cream);
+      width: 36px;
+      text-align: center;
+      background: rgba(255,255,255,0.04);
+      height: 36px;
+      line-height: 36px;
+    }
+
+    .sk-nav-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .sk-nav-row .sk-btn { margin-top: 0; }
+
+    /* Mini live leaderboard during round */
+    .sk-live-board {
+      margin-top: 20px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .sk-live-board-title {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 8px 14px;
+      background: var(--green-mid);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sk-live-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 14px;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+      font-family: 'EB Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--cream-dark);
+    }
+
+    .sk-live-row:last-child { border-bottom: none; }
+    .sk-live-row .sk-live-topar { font-family: 'Cinzel', serif; font-size: 12px; }
+    .sk-live-row .sk-live-topar.under { color: #6fcf8a; }
+    .sk-live-row .sk-live-topar.over  { color: #e07070; }
+    .sk-live-row .sk-live-topar.even  { color: var(--cream-dark); }
+
+    /* Results */
+    .sk-results-podium {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .sk-result-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      transition: border-color 0.2s;
+    }
+
+    .sk-result-card.winner {
+      background: rgba(201,168,76,0.07);
+      border-color: var(--gold);
+    }
+
+    .sk-result-rank {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      min-width: 36px;
+      text-align: center;
+      color: rgba(245,240,232,0.35);
+    }
+
+    .sk-result-card.winner .sk-result-rank { font-size: 1.8rem; }
+
+    .sk-result-info { flex: 1; }
+
+    .sk-result-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--cream);
+      display: block;
+    }
+
+    .sk-result-card.winner .sk-result-name { color: var(--gold-light); }
+
+    .sk-result-breakdown {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: rgba(245,240,232,0.35);
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .sk-result-score {
+      text-align: right;
+    }
+
+    .sk-result-total {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cream);
+      display: block;
+      line-height: 1;
+    }
+
+    .sk-result-topar {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .sk-result-topar.under { color: #6fcf8a; }
+    .sk-result-topar.over  { color: #e07070; }
+    .sk-result-topar.even  { color: var(--cream-dark); }
+
+    /* Hole by hole breakdown table in results */
+    .sk-breakdown-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      margin: 16px 0;
+    }
+
+    .sk-breakdown-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 420px;
+      font-family: 'EB Garamond', serif;
+      font-size: 0.9rem;
+    }
+
+    .sk-breakdown-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      background: var(--green-mid);
+      padding: 9px 8px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+
+    .sk-breakdown-table td {
+      padding: 8px;
+      text-align: center;
+      color: var(--cream-dark);
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+      border-right: 1px solid rgba(201,168,76,0.08);
+    }
+
+    .sk-breakdown-table td.under-par { color: #6fcf8a; font-weight: 600; }
+    .sk-breakdown-table td.over-par  { color: #e07070; }
+    .sk-breakdown-table td.at-par    { color: var(--cream); }
+    .sk-breakdown-table tr.total-row td {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      background: var(--green-mid);
+      font-weight: 600;
+      border-top: 1px solid var(--border);
+    }
+
+    .share-note {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.3);
+      text-align: center;
+      margin-top: 10px;
+    }
+
     /* ── MOBILE ── */
     @media (max-width: 600px) {
       nav ul li a { padding: 12px 12px; font-size: 9.5px; letter-spacing: 0.1em; }
@@ -598,8 +1060,38 @@
     <li><a href="#holes">Hole Guide</a></li>
     <li><a href="#leaderboard">Leaderboard</a></li>
     <li><a href="#difficulty">Difficulty</a></li>
+    <li><a href="#scorekeeper" style="text-decoration:underline; text-underline-offset:3px; color:var(--gold-light);">⛳ Play</a></li>
   </ul>
 </nav>
+
+<div class="stat-banner">
+  <div class="stat-banner-inner">
+    <div class="stat-banner-card" id="sbc-1">
+      <span class="stat-banner-icon">🏆</span>
+      <span class="stat-banner-label">Course Record</span>
+      <span class="stat-banner-value">20 &nbsp;·&nbsp; −7</span>
+      <span class="stat-banner-sub">Bruner</span>
+    </div>
+    <div class="stat-banner-card" id="sbc-2">
+      <span class="stat-banner-icon">⛳</span>
+      <span class="stat-banner-label">Holes in One</span>
+      <span class="stat-banner-value">Matty · H1</span>
+      <span class="stat-banner-value">Conor · H2</span>
+    </div>
+    <div class="stat-banner-card" id="sbc-3">
+      <span class="stat-banner-icon">🔥</span>
+      <span class="stat-banner-label">Hardest Hole</span>
+      <span class="stat-banner-value">Hole 9</span>
+      <span class="stat-banner-sub">+1.18 avg</span>
+    </div>
+    <div class="stat-banner-card" id="sbc-4">
+      <span class="stat-banner-icon">😌</span>
+      <span class="stat-banner-label">Easiest Hole</span>
+      <span class="stat-banner-value">Hole 8</span>
+      <span class="stat-banner-sub">−0.73 avg</span>
+    </div>
+  </div>
+</div>
 
 <main>
 
@@ -952,6 +1444,79 @@
     <p style="font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,240,232,0.3); text-align:center; margin-top:14px;">Avg. strokes relative to par &nbsp;·&nbsp; Hardest → Easiest</p>
   </section>
 
+  <!-- SCOREKEEPER -->
+  <section id="scorekeeper">
+    <div class="section-header fade-in">
+      <span class="section-label">Live Round</span>
+      <h2>Mobile Scorekeeper</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <!-- SETUP -->
+    <div class="sk-setup active fade-in" id="sk-setup">
+      <p style="font-family:'EB Garamond',serif; color:rgba(245,240,232,0.6); font-style:italic; margin-bottom:20px; font-size:0.95rem;">Enter player names to begin. Scores are tracked live and a final leaderboard is shown at the end.</p>
+
+      <div style="margin-bottom:16px;">
+        <p style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Number of Players</p>
+        <div class="sk-player-toggle">
+          <button class="sk-count-btn active" onclick="setPlayerCount(1)">1</button>
+          <button class="sk-count-btn" onclick="setPlayerCount(2)">2</button>
+          <button class="sk-count-btn" onclick="setPlayerCount(3)">3</button>
+          <button class="sk-count-btn" onclick="setPlayerCount(4)">4</button>
+        </div>
+      </div>
+
+      <div class="sk-player-inputs" id="sk-player-inputs"></div>
+      <button class="sk-btn" onclick="startRound()">Begin Round</button>
+    </div>
+
+    <!-- ROUND -->
+    <div class="sk-round" id="sk-round">
+      <div class="sk-progress" id="sk-progress"></div>
+
+      <div class="sk-hole-header">
+        <div class="sk-hole-info">
+          <div class="sk-hole-num" id="sk-hole-num">Hole 1</div>
+          <div class="sk-hole-meta" id="sk-hole-meta">Par 3 · Max 5</div>
+        </div>
+        <div class="sk-hole-rule" id="sk-hole-rule"></div>
+      </div>
+
+      <div class="sk-score-inputs" id="sk-score-inputs"></div>
+
+      <div class="sk-nav-row">
+        <button class="sk-btn secondary" id="sk-prev-btn" onclick="prevHole()" style="display:none;">← Back</button>
+        <button class="sk-btn" id="sk-next-btn" onclick="nextHole()">Next Hole →</button>
+      </div>
+
+      <div class="sk-live-board" id="sk-live-board">
+        <div class="sk-live-board-title">Live Standings</div>
+        <div id="sk-live-rows"></div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="sk-results" id="sk-results">
+      <div style="text-align:center; padding:20px 0 10px;">
+        <div style="font-family:'Cinzel',serif; font-size:1.1rem; color:var(--gold); letter-spacing:0.1em;">Round Complete</div>
+        <div style="font-family:'Playfair Display',serif; font-style:italic; color:rgba(245,240,232,0.5); font-size:0.9rem; margin-top:4px;">Final Results</div>
+      </div>
+
+      <div class="sk-results-podium" id="sk-podium"></div>
+
+      <div style="margin-top:24px;">
+        <p style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Hole-by-Hole Breakdown</p>
+        <div class="sk-breakdown-wrap">
+          <table class="sk-breakdown-table" id="sk-breakdown-table"></table>
+        </div>
+      </div>
+
+      <button class="sk-btn" style="margin-top:20px;" onclick="shareResults()">Share / Screenshot Results</button>
+      <p class="share-note">Tip: Use your phone's screenshot to save results</p>
+      <button class="sk-btn secondary" style="margin-top:10px;" onclick="resetRound()">Start New Round</button>
+    </div>
+  </section>
+
 </main>
 
 <footer>
@@ -961,19 +1526,23 @@
 </footer>
 
 <script>
-  // Scroll fade-in
+  // ── FADE IN OBSERVER ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
     });
   }, { threshold: 0.08 });
-
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Smooth scroll for nav
+  // Staggered stat banner animation on load
+  [1,2,3,4].forEach(i => {
+    setTimeout(() => {
+      const el = document.getElementById(`sbc-${i}`);
+      if (el) el.classList.add('visible');
+    }, i * 150);
+  });
+
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
@@ -981,6 +1550,274 @@
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // ── SCOREKEEPER DATA ──
+  const HOLES = [
+    { par: 3, max: 5, rule: "Must strike tree above red line" },
+    { par: 2, max: 4, rule: "Strike stump OR finish in red circle" },
+    { par: 4, max: 6, rule: "Must strike the door" },
+    { par: 3, max: 5, rule: "Ball must finish in red circle" },
+    { par: 3, max: 5, rule: "Strike bucket OR within one grip length. In bucket = −1" },
+    { par: 2, max: 4, rule: "Finish in red circle unless sign is struck" },
+    { par: 3, max: 5, rule: "Finish in circle OR strike telephone pole" },
+    { par: 4, max: 6, rule: "Within one club length OR strike drainage pipe" },
+    { par: 3, max: 5, rule: "Must strike the left stump" },
+  ];
+  const COURSE_PAR = 27;
+
+  let playerCount = 1;
+  let players = [];
+  let scores = [];
+  let currentHole = 0;
+  let holeScores = []; // per hole, per player
+
+  // ── SETUP ──
+  function setPlayerCount(n) {
+    playerCount = n;
+    document.querySelectorAll('.sk-count-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', i + 1 === n);
+    });
+    renderPlayerInputs();
+  }
+
+  function renderPlayerInputs() {
+    const container = document.getElementById('sk-player-inputs');
+    container.innerHTML = '';
+    for (let i = 0; i < playerCount; i++) {
+      container.innerHTML += `
+        <div class="sk-player-row">
+          <label>P${i+1}</label>
+          <input class="sk-input" id="sk-pname-${i}" type="text" placeholder="Player ${i+1} name" maxlength="20" />
+        </div>`;
+    }
+  }
+
+  function startRound() {
+    players = [];
+    for (let i = 0; i < playerCount; i++) {
+      const val = document.getElementById(`sk-pname-${i}`).value.trim();
+      players.push(val || `Player ${i+1}`);
+    }
+    scores = players.map(() => 0);
+    holeScores = HOLES.map(() => players.map(() => null));
+    currentHole = 0;
+    show('sk-round');
+    renderHole();
+  }
+
+  // ── ROUND ──
+  function renderHole() {
+    const h = HOLES[currentHole];
+
+    // Progress dots
+    const prog = document.getElementById('sk-progress');
+    prog.innerHTML = HOLES.map((_, i) => {
+      let cls = i < currentHole ? 'done' : i === currentHole ? 'current' : '';
+      return `<div class="sk-prog-dot ${cls}"></div>`;
+    }).join('');
+
+    document.getElementById('sk-hole-num').textContent = `Hole ${currentHole + 1}`;
+    document.getElementById('sk-hole-meta').textContent = `Par ${h.par} · Max ${h.max}`;
+    document.getElementById('sk-hole-rule').textContent = h.rule;
+
+    // Score inputs
+    const container = document.getElementById('sk-score-inputs');
+    container.innerHTML = players.map((name, pi) => {
+      const saved = holeScores[currentHole][pi];
+      const val = saved !== null ? saved : h.par;
+      const running = scores[pi] + (saved !== null ? 0 : 0);
+      const topar = scores[pi] - (currentHole * 0); // will recalc
+      return `
+        <div class="sk-score-row">
+          <span class="sk-pname">${name}</span>
+          <span class="sk-running" id="sk-run-${pi}">${formatRunning(pi)}</span>
+          <div class="sk-stepper">
+            <button class="sk-step-btn" onclick="adjustScore(${pi}, -1)">−</button>
+            <div class="sk-step-val" id="sk-val-${pi}">${val}</div>
+            <button class="sk-step-btn" onclick="adjustScore(${pi}, 1)">+</button>
+          </div>
+        </div>`;
+    }).join('');
+
+    // Init display values
+    players.forEach((_, pi) => {
+      const saved = holeScores[currentHole][pi];
+      if (saved === null) holeScores[currentHole][pi] = h.par;
+    });
+
+    // Nav buttons
+    document.getElementById('sk-prev-btn').style.display = currentHole > 0 ? 'block' : 'none';
+    document.getElementById('sk-next-btn').textContent = currentHole < 8 ? 'Next Hole →' : 'Finish Round ⛳';
+
+    renderLiveBoard();
+  }
+
+  function adjustScore(pi, delta) {
+    const h = HOLES[currentHole];
+    let cur = holeScores[currentHole][pi];
+    cur = Math.max(1, Math.min(h.max, cur + delta));
+    holeScores[currentHole][pi] = cur;
+    document.getElementById(`sk-val-${pi}`).textContent = cur;
+    renderLiveBoard();
+  }
+
+  function formatRunning(pi) {
+    let total = 0;
+    let holesPlayed = 0;
+    for (let h = 0; h < currentHole; h++) {
+      if (holeScores[h][pi] !== null) { total += holeScores[h][pi]; holesPlayed++; }
+    }
+    if (holesPlayed === 0) return 'Thru 0';
+    const par = HOLES.slice(0, holesPlayed).reduce((s, h) => s + h.par, 0);
+    const diff = total - par;
+    const sign = diff > 0 ? '+' : '';
+    return `${sign}${diff} · Thru ${holesPlayed}`;
+  }
+
+  function renderLiveBoard() {
+    // Build standings based on holes completed so far
+    const standings = players.map((name, pi) => {
+      let total = 0;
+      let parSoFar = 0;
+      for (let h = 0; h < currentHole; h++) {
+        total += holeScores[h][pi] || 0;
+        parSoFar += HOLES[h].par;
+      }
+      return { name, total, parSoFar, diff: total - parSoFar };
+    }).sort((a, b) => a.diff - b.diff);
+
+    document.getElementById('sk-live-rows').innerHTML = standings.map(p => {
+      const sign = p.diff > 0 ? '+' : '';
+      const cls = p.diff < 0 ? 'under' : p.diff > 0 ? 'over' : 'even';
+      const toparStr = currentHole === 0 ? 'E' : `${sign}${p.diff}`;
+      return `<div class="sk-live-row">
+        <span>${p.name}</span>
+        <span>${currentHole === 0 ? '—' : p.total}</span>
+        <span class="sk-live-topar ${cls}">${toparStr}</span>
+      </div>`;
+    }).join('');
+
+    // Update running totals
+    players.forEach((_, pi) => {
+      const el = document.getElementById(`sk-run-${pi}`);
+      if (el) el.textContent = formatRunning(pi);
+    });
+  }
+
+  function nextHole() {
+    // Commit current scores
+    players.forEach((_, pi) => {
+      scores[pi] += holeScores[currentHole][pi] || HOLES[currentHole].par;
+    });
+    // Subtract back the double-add issue — recalculate cleanly
+    scores = players.map((_, pi) => {
+      return holeScores.slice(0, currentHole + 1).reduce((sum, h) => sum + (h[pi] || 0), 0);
+    });
+
+    if (currentHole < 8) {
+      currentHole++;
+      renderHole();
+    } else {
+      showResults();
+    }
+  }
+
+  function prevHole() {
+    if (currentHole > 0) {
+      currentHole--;
+      scores = players.map((_, pi) => {
+        return holeScores.slice(0, currentHole).reduce((sum, h) => sum + (h[pi] || 0), 0);
+      });
+      renderHole();
+    }
+  }
+
+  // ── RESULTS ──
+  function showResults() {
+    show('sk-results');
+
+    const finalScores = players.map((name, pi) => {
+      const total = holeScores.reduce((sum, h) => sum + (h[pi] || 0), 0);
+      return { name, total, diff: total - COURSE_PAR };
+    }).sort((a, b) => a.diff - b.diff);
+
+    // Podium
+    const podium = document.getElementById('sk-podium');
+    const medals = ['🥇', '🥈', '🥉'];
+    let rank = 1;
+    podium.innerHTML = finalScores.map((p, i) => {
+      if (i > 0 && finalScores[i].diff > finalScores[i-1].diff) rank = i + 1;
+      const isWinner = rank === 1;
+      const sign = p.diff > 0 ? '+' : '';
+      const cls = p.diff < 0 ? 'under' : p.diff > 0 ? 'over' : 'even';
+      const medal = rank <= 3 ? medals[rank - 1] : rank;
+      return `
+        <div class="sk-result-card ${isWinner ? 'winner' : ''}">
+          <div class="sk-result-rank">${medal}</div>
+          <div class="sk-result-info">
+            <span class="sk-result-name">${p.name}</span>
+            <div class="sk-result-breakdown">${holeScores.map((h, hi) => `H${hi+1}: ${h[players.indexOf(p.name)] || '—'}`).join(' · ')}</div>
+          </div>
+          <div class="sk-result-score">
+            <span class="sk-result-total">${p.total}</span>
+            <span class="sk-result-topar ${cls}">${sign}${p.diff}</span>
+          </div>
+        </div>`;
+    }).join('');
+
+    // Breakdown table
+    const table = document.getElementById('sk-breakdown-table');
+    const playerIndices = players.map((_, i) => i);
+    const headerRow = `<tr><th>Hole</th><th>Par</th>${players.map(n => `<th>${n}</th>`).join('')}</tr>`;
+    const holeRows = HOLES.map((h, hi) => {
+      const cells = playerIndices.map(pi => {
+        const s = holeScores[hi][pi] || 0;
+        const diff = s - h.par;
+        const cls = diff < 0 ? 'under-par' : diff > 0 ? 'over-par' : 'at-par';
+        return `<td class="${cls}">${s}</td>`;
+      }).join('');
+      return `<tr><td>${hi+1}</td><td>${h.par}</td>${cells}</tr>`;
+    }).join('');
+    const totalRow = `<tr class="total-row"><td>Total</td><td>${COURSE_PAR}</td>${playerIndices.map(pi => {
+      const total = holeScores.reduce((sum, h) => sum + (h[pi] || 0), 0);
+      const diff = total - COURSE_PAR;
+      const sign = diff > 0 ? '+' : '';
+      return `<td>${total} (${sign}${diff})</td>`;
+    }).join('')}</tr>`;
+    table.innerHTML = `<thead>${headerRow}</thead><tbody>${holeRows}${totalRow}</tbody>`;
+  }
+
+  function shareResults() {
+    if (navigator.share) {
+      const lines = players.map((_, pi) => {
+        const total = holeScores.reduce((sum, h) => sum + (h[pi] || 0), 0);
+        const diff = total - COURSE_PAR;
+        const sign = diff > 0 ? '+' : '';
+        return `${players[pi]}: ${total} (${sign}${diff})`;
+      }).sort();
+      navigator.share({
+        title: 'Backyard 9 Results',
+        text: `⛳ Backyard 9 Round Results\n${lines.join('\n')}\nCourse Par: ${COURSE_PAR}`
+      });
+    } else {
+      alert('Use your phone\'s screenshot button to save the results!');
+    }
+  }
+
+  function resetRound() {
+    players = []; scores = []; holeScores = []; currentHole = 0;
+    playerCount = 1;
+    document.querySelectorAll('.sk-count-btn').forEach((btn, i) => btn.classList.toggle('active', i === 0));
+    show('sk-setup');
+    renderPlayerInputs();
+  }
+
+  function show(id) {
+    ['sk-setup', 'sk-round', 'sk-results'].forEach(s => {
+      document.getElementById(s).classList.toggle('active', s === id);
+    });
+  }
+
+  // Init
+  renderPlayerInputs();
 </script>
-</body>
-</html>
