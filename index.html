@@ -1030,6 +1030,104 @@
       margin-top: 10px;
     }
 
+    /* ── DROPDOWN NAV ── */
+    nav ul li { position: relative; }
+
+    .nav-dropdown { display: none; }
+
+    nav ul li:hover .nav-dropdown,
+    nav ul li:focus-within .nav-dropdown {
+      display: block;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--green-mid);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--gold);
+      min-width: 160px;
+      z-index: 200;
+    }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 11px 18px !important;
+      border-bottom: 1px solid rgba(201,168,76,0.1) !important;
+      white-space: nowrap;
+      border-left: none !important;
+    }
+
+    .nav-dropdown a:last-child { border-bottom: none !important; }
+
+    nav ul li > a.has-dropdown::after {
+      content: ' ▾';
+      font-size: 8px;
+      opacity: 0.6;
+    }
+
+    /* ── WALL OF SHAME ── */
+    .shame-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .shame-card {
+      background: rgba(224, 112, 112, 0.04);
+      border: 1px solid rgba(224,112,112,0.25);
+      border-left: 3px solid #e07070;
+      overflow: hidden;
+    }
+
+    .shame-card-header {
+      background: rgba(224,112,112,0.08);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(224,112,112,0.15);
+    }
+
+    .shame-card-header .shame-title {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #e07070;
+    }
+
+    .shame-card-header .shame-stat {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--cream);
+    }
+
+    .shame-card-body {
+      padding: 14px 18px;
+      font-family: 'EB Garamond', serif;
+      font-size: 0.97rem;
+      color: rgba(245,240,232,0.75);
+      line-height: 1.65;
+    }
+
+    .shame-card-body .shame-holder {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--cream);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .incident-label {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #e07070;
+      display: block;
+      margin-bottom: 6px;
+    }
+
     /* ── MOBILE ── */
     @media (max-width: 600px) {
       nav ul li a { padding: 12px 12px; font-size: 9.5px; letter-spacing: 0.1em; }
@@ -1057,10 +1155,21 @@
 <nav>
   <ul>
     <li><a href="#rules">General Rules</a></li>
-    <li><a href="#scorecard">Scorecard</a></li>
-    <li><a href="#holes">Hole Guide</a></li>
-    <li><a href="#leaderboard">Leaderboard</a></li>
-    <li><a href="#difficulty">Difficulty</a></li>
+    <li>
+      <a href="#scorecard" class="has-dropdown">Course Info</a>
+      <div class="nav-dropdown">
+        <a href="#scorecard">Scorecard</a>
+        <a href="#holes">Hole Guide</a>
+        <a href="#difficulty">Difficulty</a>
+      </div>
+    </li>
+    <li>
+      <a href="#leaderboard" class="has-dropdown">Records</a>
+      <div class="nav-dropdown">
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#shame">Wall of Shame</a>
+      </div>
+    </li>
     <li><a href="#scorekeeper" style="text-decoration:underline; text-underline-offset:3px; color:var(--gold-light);">⛳ Play</a></li>
   </ul>
 </nav>
@@ -1443,6 +1552,52 @@
       </div>
     </div>
     <p style="font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,240,232,0.3); text-align:center; margin-top:14px;">Avg. strokes relative to par &nbsp;·&nbsp; Hardest → Easiest</p>
+  </section>
+
+  <!-- WALL OF SHAME -->
+  <section id="shame">
+    <div class="section-header fade-in">
+      <span class="section-label">Hall of Infamy</span>
+      <h2>Wall of Shame</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="shame-grid fade-in">
+
+      <div class="shame-card">
+        <div class="shame-card-header">
+          <span class="shame-title">Worst Round Ever</span>
+          <span class="shame-stat">+12</span>
+        </div>
+        <div class="shame-card-body">
+          <span class="shame-holder">Sam M</span>
+          The all-time worst round in Backyard 9 history. A score of +12 over par that set the benchmark for future disgraceful performances.
+        </div>
+      </div>
+
+      <div class="shame-card">
+        <div class="shame-card-header">
+          <span class="shame-title">Worst Single Hole · Hole 3</span>
+          <span class="shame-stat">8</span>
+        </div>
+        <div class="shame-card-body">
+          <span class="shame-holder">Sam M</span>
+          An 8 on the par-4 door hole — two strokes over the maximum. A performance so catastrophic it required a rule amendment establishing stroke limits.
+        </div>
+      </div>
+
+      <div class="shame-card">
+        <div class="shame-card-header">
+          <span class="shame-title">Incident Report #001</span>
+          <span class="shame-stat">⚠️</span>
+        </div>
+        <div class="shame-card-body">
+          <span class="incident-label">Gene · Hole 4</span>
+          On an otherwise unremarkable round, Gene's tee shot on Hole 4 traveled well beyond the intended target, clearing the bordering bushes entirely and coming to rest on the windshield of a parked vehicle in the adjacent parking lot in Villas. No structural damage was reported. The shot was ruled unplayable. Gene was not penalized for range.
+        </div>
+      </div>
+
+    </div>
   </section>
 
   <!-- SCOREKEEPER -->
